@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cuadro" width="1000px" height="1000px"></canvas>
+    <img id="imagen" src="baby-yoda-11.png" style="display: none;">
+    <script type="text/javascript">
+        const cv = document.getElementById('cuadro');
+        const canvas = document.getElementById('cuadro');
+        const ctx = canvas.getContext('2d');
+
+        var color = 'red';
+        //texto
+/*         ctx.font = "50px JBox Arial";
+        ctx.fillText("Hola mundo", 300, 100);
+        ctx.strokeText("Hola mundo 2", 300, 150);
+
+        //gradiante
+        var grd = ctx.createLinearGradient(80, 0, 220,0);
+        grd.addColorStop(0, "yellow");
+        grd.addColorStop(1, "purple");
+
+        ctx.fillStyle = grd;
+        ctx.fillRect(20,200,200,120);
+        
+        //gradiante
+        var grd = ctx.createRadialGradient(100, 60, 5, 100, 70, 100);
+        grd.addColorStop(0, "yellow");
+        grd.addColorStop(.5, "purple");
+        grd.addColorStop(1, "green")
+
+        ctx.fillStyle = grd;
+        ctx.fillRect(0,0,200,200);
+
+        //imagen
+        var img = document.getElementById('imagen')
+        ctx.drawImage(img, 200,200)
+         */
+        //evento click
+        cv.addEventListener('click', function(e){
+            ctx.beginPath();
+            ctx.arc(e.clientX, e.clientY, 50, 0, 2 * Math.PI);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.stroke();
+        });
+
+        cv.addEventListener('mouseover', function(e){
+            color = generateRandomColor();
+        })
+
+        function generateRandomColor() {
+            var trans = '0.5'; // 50% transparency
+            var color = 'rgba(';
+            for (var i = 0; i < 3; i++) {
+                color += Math.floor(Math.random() * 255) + ',';
+            }
+            color += trans + ')'; // add the transparency
+            return color;
+        }
+
+
+
+    </script> 
+
+</body>
+</html>
