@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cuadro" width="1000px" height="900px"></canvas>    
+    <script type="text/javascript">
+        const cv = document.getElementById('cuadro');
+        const canvas = document.getElementById('cuadro');
+        const ctx = canvas.getContext('2d');
+
+        var color = 'red';
+        var fig = 'arc';
+        var pressed = false;
+        var super_x = 0, super_y = 0;
+        
+        //evento click
+        /*cv.addEventListener('click', function(e){
+            
+            ctx.fillStyle = color;
+            if (fig == 'arc') {
+                ctx.beginPath();
+                ctx.arc(e.clientX, e.clientY, 50, 0, 2 * Math.PI);                
+                ctx.fill();
+                ctx.stroke();
+            } else {
+                ctx.fillRect(e.clientX-50, e.clientY-50 , 100, 100);
+                ctx.stroke();
+            }
+        });
+
+        cv.addEventListener('mouseover', function(e){
+            color = generateRandomColor();
+        });
+
+        cv.addEventListener('mouseout', function(e){
+            fig = (fig=='arc') ? 'rec' : 'arc';
+        });
+        
+        cv.addEventListener('mousemove', function(e){
+            if (pressed) {
+                ctx.fillStyle = 'black';
+                ctx.fillRect(e.clientX-5, e.clientY-5 , 10, 10);
+                ctx.stroke();
+            }
+        });
+        cv.addEventListener('mousedown', function(e) {
+            pressed = true;
+        });
+        cv.addEventListener('mouseup', function(e) {
+            pressed = false;
+        });
+
+
+        function generateRandomColor() {
+            var trans = '0.5'; // 50% transparency
+            var color = 'rgba(';
+            for (var i = 0; i < 3; i++) {
+                color += Math.floor(Math.random() * 255) + ',';
+            }
+            color += trans + ')'; // add the transparency
+            return color;
+        }
+        */
+
+        document.addEventListener('keydown', function(e){
+            //arriba
+            if (e.keyCode == '38') {
+                super_y -= 10;
+                console.log('arriba');
+            }
+            //abajo
+            if (e.keyCode == '40') {
+                super_y +=10;
+                console.log('abajo');
+                
+            }
+            //izquierda
+            if (e.keyCode == '37') {
+                super_x -= 10;
+                console.log('izquierda');
+            }
+            //derecha
+            if (e.keyCode == '39') {
+                super_x += 10;
+                console.log('derecha');
+            }
+            paint();
+        });
+        function paint(){
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0,0, 1000, 1000);
+            ctx.fillStyle = 'red';
+            ctx.fillRect(super_x, super_y, 50, 50);
+            ctx.strokeRect(super_x, super_y, 50, 50);
+            
+        }
+
+    </script> 
+
+</body>
+</html>
