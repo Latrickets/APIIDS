@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cuadro" width="1000px" height="900px"></canvas>
+    <script type="text/javascript">
+        var canvas = null;
+        var ctx = null;
+        var pressed = false;
+        var super_x = 250, super_y = 250;
+
+        function generateRandomColor() {
+            var trans = '0.5'; // 50% transparency
+            var color = 'rgba(';
+            for (var i = 0; i < 3; i++) {
+                color += Math.floor(Math.random() * 255) + ',';
+            }
+            color += trans + ')'; // add the transparency
+            return color;
+        }
+        
+        function run(){
+            canvas = document.getElementById('cuadro');
+            ctx = canvas.getContext('2d');
+            paint();
+        }
+        function paint(){
+
+            window.requestAnimationFrame(paint);
+
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0,0, 1000, 1000);
+            ctx.fillStyle = generateRandomColor();
+            ctx.fillRect(super_x, super_y, 50, 50);
+            ctx.strokeRect(super_x, super_y, 50, 50);
+
+            super_x+=5;
+            if(super_x > 1000){
+                super_x = 0;
+            }
+        }
+
+        window.requestAnimationFrame = (function () {
+            return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 17);
+            };
+        }());
+
+        window.addEventListener("load", run, false);
+
+        
+    </script>
+</body>
+</html>
