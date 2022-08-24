@@ -7,15 +7,185 @@
     <title>Document</title>
 </head>
 <body>
-    <canvas id="cuadro" width="1000px" height="900px"></canvas>    
+    <canvas id="cuadro" width="700px" height="1000px"></canvas>    
     <script type="text/javascript">
         const cv = document.getElementById('cuadro');
         const canvas = document.getElementById('cuadro');
         const ctx = canvas.getContext('2d');
 
         var color = 'red';
-        ctx.fillStyle = color;
-        ctx.fillRect(0,0,100,100);
+
+        ctx
+        //pecho y cabeza
+        ctx.fillStyle = 'rgb(0,0,0)';
+        ctx.fillRect(200,200,150,250);
+        ctx.fillStyle = 'rgb(236,174,167)';
+        ctx.fillRect(250,170,50,30);
+        ctx.beginPath();
+        ctx.fillStyle = 'rgb(236,174,167)';
+        ctx.arc(275, 140, 50, 0, 2 * Math.PI);
+        ctx.arc(250, 140, 25, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();
+        ctx.fillStyle = 'rgb(33,16,5)';
+        ctx.arc(275, 120, 50, Math.PI, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.fillStyle = 'rgb(0,0,0)';
+        ctx.arc(255, 140, 10, 0, 2 * Math.PI);
+        ctx.arc(295, 140, 10, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.lineWidth = 6;
+        ctx.moveTo(250,170);
+        ctx.lineTo(280,170);
+        ctx.stroke();
+        ctx.closePath();
+
+        //pantalon
+        ctx.fillStyle = 'rgb(26,43,71)';
+        ctx.fillRect(200,450,150,50);
+        ctx.fillStyle = 'rgb(26,43,71)';
+        ctx.fillRect(200,500,60,200);
+        ctx.fillStyle = 'rgb(26,43,71)';
+        ctx.fillRect(290,500,60,200);
+        //brazos
+        ctx.fillStyle = 'rgb(236,174,167)';
+        ctx.fillRect(200,250,30,200);
+        ctx.fillStyle = 'rgb(236,174,167)';
+        ctx.fillRect(320,250,30,200);
+
+        ctx.beginPath();
+        ctx.fillStyle = 'rgb(236,174,167)';
+        ctx.arc(215, 470, 25, 0, 2 * Math.PI);
+        ctx.arc(335, 470, 25, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+
+        //pies
+        ctx.fillStyle = 'rgb(0,0,0)';
+        ctx.fillRect(200,700,70,30);
+        ctx.fillStyle = 'rgb(0,0,0)';
+        ctx.fillRect(290,700,70,30);
+
+        /*
+        ctx.fillStyle = 'rgb(84,175,204)';
+        ctx.fillRect(0,0,1000,350);
+
+        ctx.fillStyle = 'rgb(155,197,27)';
+        ctx.fillRect(0,350,1000,150);
+        
+        //rgb(84,175,204)
+        
+        ctx.beginPath();
+        ctx.arc(240, 400, 150, 0, 2 * Math.PI);
+        ctx.fillStyle = 'rgb(155,197,27)';
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();
+        ctx.arc(280, 400, 150, 0, 2 * Math.PI);
+        ctx.fillStyle = 'rgb(155,197,27)';
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(400, 400, 150, 0, 2 * Math.PI);
+        ctx.fillStyle = 'rgb(155,197,27)';
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.arc(550, 400, 150, 0, 2 * Math.PI);
+        ctx.fillStyle = 'rgb(155,197,27)';
+        ctx.fill();
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.arc(700, 400, 150, 0, 2 * Math.PI);
+        ctx.fillStyle = 'rgb(155,197,27)';
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.fillStyle = 'rgb(186,85,10)';
+        ctx.fillRect(20,280,75,100);
+        ctx.beginPath();
+        ctx.arc(20, 260, 50, 0, 2 * Math.PI);
+        ctx.arc(40, 260, 50, 0, 2 * Math.PI);
+        ctx.arc(60, 260, 50, 0, 2 * Math.PI);
+        ctx.arc(80, 260, 50, 0, 2 * Math.PI);
+        ctx.fillStyle = 'rgb(155,197,27)';
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();        
+        ctx.arc(40, 220, 50, 0, 2 * Math.PI);
+        ctx.arc(60, 220, 50, 0, 2 * Math.PI);
+        ctx.fillStyle = 'rgb(155,197,27)';
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.fillStyle = 'rgb(186,85,10)';
+        ctx.fillRect(870,280,75,100);
+        ctx.beginPath();
+        ctx.fillStyle = 'rgb(155,197,27)';
+        ctx.arc(870, 260, 50, 0, 2 * Math.PI);
+        ctx.arc(900, 260, 50, 0, 2 * Math.PI);
+        ctx.arc(930, 260, 50, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();        
+        ctx.fillStyle = 'rgb(155,197,27)';
+        ctx.arc(890, 230, 50, 0, 2 * Math.PI);
+        ctx.arc(920, 230, 50, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+
+        //nubes
+        ctx.beginPath();        
+        ctx.fillStyle = 'rgb(228,237,239)';
+        ctx.arc(200, 70, 50, 0, 2 * Math.PI);
+        ctx.arc(250, 70, 50, 0, 2 * Math.PI);
+        ctx.arc(300, 70, 50, 0, 2 * Math.PI);
+        ctx.arc(225, 100, 50, 0, 2 * Math.PI);
+        ctx.arc(275, 100, 50, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();        
+        ctx.fillStyle = 'rgb(228,237,239)';
+        ctx.arc(700, 70, 50, 0, 2 * Math.PI);
+        ctx.arc(750, 70, 50, 0, 2 * Math.PI);
+        ctx.arc(800, 70, 50, 0, 2 * Math.PI);
+        ctx.arc(725, 100, 50, 0, 2 * Math.PI);
+        ctx.arc(775, 100, 50, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+
+        
+        ctx.beginPath();        
+        ctx.fillStyle = 'rgb(23,97,40)';
+        ctx.arc(300, 370, 40, 0, 2 * Math.PI);
+        ctx.arc(280, 340, 25, 0, 2 * Math.PI);
+        ctx.arc(340, 350, 25, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+        
+        ctx.beginPath();        
+        ctx.fillStyle = 'rgb(23,97,40)';
+        ctx.arc(500, 370, 40, 0, 2 * Math.PI);
+        ctx.arc(460, 340, 25, 0, 2 * Math.PI);
+        ctx.arc(540, 340, 25, 0, 2 * Math.PI);
+        ctx.arc(500, 340, 25, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.closePath();
+        */
 
     </script> 
 
