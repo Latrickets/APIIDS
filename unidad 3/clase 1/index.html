@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    
+    <div id="contenedor">
+    
+        <h1>{{ name }}</h1>
+        <h2> {{ message }}</h2>
+
+        <h1></h1>
+        <button @click="hola">click me</button>
+        <input type="text" v-model="name">
+        <hr>
+        
+        <input type="text" v-model="num1" name="numero1"> <br><br>
+        <input type="text" v-model="num2" name="numero2">
+        <h1>{{res}}</h1>
+
+        <button @click="suma">suma</button>
+
+    </div>
+
+<script type="text/javascript">
+
+    const  { createApp } = Vue;
+
+    const app = createApp({
+        data() {
+        return {
+            name : 'Angel Duarte',
+            message: 'Hello Vue!',
+            num1 : "",
+            num2 : "",
+            res : "",
+        }
+        },
+        methods: {
+            hola(){
+                alert('hola ' + this.name);
+            },
+            suma(){
+                this.res = "" + (parseInt(this.num1) + parseInt(this.num2));
+            }
+
+        }
+
+    }).mount('#contenedor')
+
+</script>
+
+
+</body>
+</html>
