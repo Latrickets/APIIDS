@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    
+    <div id="contenedor">  
+
+        <form>
+            <fieldset>
+                <legend>
+                    Acceso al panel
+                </legend>
+                <label for="">
+                    correo
+                </label>
+                <input type="email" v-model="email">
+                <label for="">Password</label>
+                <input type="password" v-model="password" name="" id="">
+
+                <button @click="login">Acceder</button>
+            </fieldset>
+        </form>
+        
+    </div>
+
+<script type="text/javascript">
+
+    const  { createApp } = Vue;
+
+    
+
+    const app = createApp({
+        data() {
+        return {
+            users : null,
+            email : "",
+            password: "",
+        }
+        },
+        methods: {
+            login(e){
+                e.preventDefault();
+                var user_email = this.email;
+                var user_pass = this.password;
+                var access = this.users.map(function(x){
+                    if (user_email === x.email.toLowerCase()) {                        
+                        if (user_pass === x.password) {
+                            return true;
+                        }
+                    }
+                })
+                console.log(access);
+            }
+        },
+        mounted(){
+            fetch('users.json')
+              .then((res) => res.json())
+              .then((json) => this.users = json)
+              .catch((error) => console.log(error))
+        }
+
+
+    }).mount('#contenedor')
+
+</script>
+
+
+</body>
+</html>
