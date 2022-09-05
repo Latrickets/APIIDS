@@ -24,29 +24,22 @@
         <h1>{{res}}</h1>
 
         <button @click="suma">suma</button>
-
         <hr>
-
         <input type="text" v-model="age">
         <button>
             Revisar
         </button>
-
         <h1 v-if=" age >= 18">
             Pase
         </h1>
         <h1 v-if=" age < 18">
             No Pase
         </h1>
-
         <hr>
-
         <ol>
-
             <li v-for="item in chamacos">
                 {{ item.name }}: <span>{{ item.role }}</span>
             </li>
-
         </ol>
 
         <input type="text" v-model="name_chamaco">
@@ -90,7 +83,6 @@
     }).mount('#contenedor')
 
 </script>
-
 
 </body>
 </html>
