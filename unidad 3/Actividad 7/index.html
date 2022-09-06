@@ -53,9 +53,11 @@
                         if (user_pass === x.password) {
                             username = x.username;
                             sessionStorage.setItem("username", username);
+                            alert('Bienvenido '+ x.username);
                             location.href = 'tabla.html';
                         }
                     }
+                    alert('Error de credenciales.');
                 })
                 console.log(access);
             }
