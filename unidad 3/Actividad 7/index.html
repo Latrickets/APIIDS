@@ -48,17 +48,23 @@
                 var user_email = this.email;
                 var user_pass = this.password;
                 var username;
+                var logged = false;
                 var access = this.users.map(function(x){
                     if (user_email.toLowerCase() === x.email.toLowerCase()) {
                         if (user_pass === x.password) {
-                            username = x.username;
-                            sessionStorage.setItem("username", username);
-                            alert('Bienvenido '+ x.username);
-                            location.href = 'tabla.html';
+                            sessionStorage.setItem("username", x.username);
+                            console.log(x.username);
+                            return true;
                         }
                     }
-                    alert('Error de credenciales.');
                 })
+                if(access.includes(true)){
+                    username = sessionStorage.getItem("username");
+                    alert('Bienvenido '+ username);
+                    location.href = 'tabla.html';
+                }else{
+                    alert('Error de credenciales, vuelve a intentarlo');
+                }
                 console.log(access);
             }
         },
