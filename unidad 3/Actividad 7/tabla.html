@@ -82,22 +82,22 @@
 					<div class="row">
 						<div class="mb-3 col-4">
 							<label for="phoneForm" class="form-label">Phone</label>
-							<input type="text" class="form-control" id="phoneForm" placeholder="name@example.com" v-model="formUser.phone" />
+							<input type="text" class="form-control" id="phoneForm" placeholder="" v-model="formUser.phone" />
 						</div>
 						<div class="mb-3 col-4">
 							<label for="websiteForm" class="form-label">Website</label>
-							<input type="text" class="form-control" id="websiteForm" placeholder="name@example.com" v-model="formUser.website" />
+							<input type="text" class="form-control" id="websiteForm" placeholder="" v-model="formUser.website" />
 						</div>
 					</div>
 					<div class="mb-3 col-4">
 						<label>Company Form</label><br />
 						<div class="row" style="margin-left: 20px">
 							<label for="companyNameForm" class="form-label">Name</label>
-							<input style="margin-left: 10px" type="text" class="form-control" id="companyNameForm" placeholder="Company Name" v-model="formUser.company.name" />
+							<input style="margin-left: 10px" type="text" class="form-control" id="companyNameForm" placeholder="" v-model="formUser.company.name" />
 							<label for="catchPhraseForm" class="form-label">CatchPhrase</label>
-							<input style="margin-left: 10px" type="text" class="form-control" id="catchPhraseForm" placeholder="CatchPhrase" v-model="formUser.company.catchPhrase" />
+							<input style="margin-left: 10px" type="text" class="form-control" id="catchPhraseForm" placeholder="" v-model="formUser.company.catchPhrase" />
 							<label for="bsForm" class="form-label">Bs</label>
-							<input style="margin-left: 10px" type="text" class="form-control" id="bsForm" placeholder="Bs" v-model="formUser.company.bs" />
+							<input style="margin-left: 10px" type="text" class="form-control" id="bsForm" placeholder="" v-model="formUser.company.bs" />
 						</div>
 					</div>
 					<button type="button" class="btn btn-primary" @click="save" v-if="action">
