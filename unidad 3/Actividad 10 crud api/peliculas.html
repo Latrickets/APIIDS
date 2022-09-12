@@ -14,22 +14,43 @@
 
 <body>
     <div id="app">
-        <div v-for="peli in peliculas">
-            <p>{{ peli.title }}</p>
+        <div class="container">
+
+            <div class="row row-cols-auto">
+                <div class="col" v-for="(peli, index) in peliculas" :key="peli.id">
+                    <div class="card" style="width: 18rem;">
+                        <img :src="'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/'+peli.poster_path"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <a class="btn btn-success" @click="details()">
+                                <p class="card-text">{{peli.title}}</p>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
+
     </div>
     <script type="text/javascript">
         // populares get
         // https://api.themoviedb.org/3/movie/popular?api_key=1c57abea8acb7e82ea504fc2a0a75ec4&language=es-MX
-        const { createApp } = Vue;
+        const {
+            createApp
+        } = Vue;
         const app = createApp({
             data() {
                 return {
                     peliculas: [],
-                    name : 'hola',
+                    name: 'hola',
                 }
             },
             methods: {
+                details(id){
+                    sessionStorage.setItem("idPeli", );
+                    location.href = 'detail.html';
+                }
 
             },
             mounted() {
@@ -38,21 +59,19 @@
                     url: 'https://api.themoviedb.org/3/movie/popular?api_key=1c57abea8acb7e82ea504fc2a0a75ec4&language=es-MX',
                     headers: {}
                 };
-                var self = this;
                 axios(config)
                     .then(function (response) {
-                        if (response.data.results){
-                            self.peliculas = JSON.stringify(response.data.results);
-                            self.peliculas = JSON.parse(self.peliculas);
+                        if (response.data.results) {
+                            app.peliculas = JSON.stringify(response.data.results);
+                            app.peliculas = JSON.parse(app.peliculas);
+                            console.log(app.peliculas);
                         }
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
             }
-            }).mount('#app');
-
-
+        }).mount('#app');
     </script>
 </body>
 
