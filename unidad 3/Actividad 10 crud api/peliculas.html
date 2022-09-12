@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="peli in peliculas">
+            <p>{{ peli.title }}</p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // populares get
+        // https://api.themoviedb.org/3/movie/popular?api_key=1c57abea8acb7e82ea504fc2a0a75ec4&language=es-MX
+        const { createApp } = Vue;
+        const app = createApp({
+            data() {
+                return {
+                    peliculas: [],
+                    name : 'hola',
+                }
+            },
+            methods: {
+
+            },
+            mounted() {
+                var config = {
+                    method: 'get',
+                    url: 'https://api.themoviedb.org/3/movie/popular?api_key=1c57abea8acb7e82ea504fc2a0a75ec4&language=es-MX',
+                    headers: {}
+                };
+                var self = this;
+                axios(config)
+                    .then(function (response) {
+                        if (response.data.results){
+                            self.peliculas = JSON.stringify(response.data.results);
+                            self.peliculas = JSON.parse(self.peliculas);
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+            }).mount('#app');
+
+
+    </script>
+</body>
+
+</html>
