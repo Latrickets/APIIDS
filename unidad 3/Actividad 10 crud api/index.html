@@ -71,6 +71,8 @@
           axios(config)
             .then(function (response) {
               if (response.data.success) {
+                sessionStorage.setItem("user", JSON.stringify(app.email));
+                console.log(sessionStorage.getItem('user'))
                 location.href = 'peliculas.html';
               }
             })

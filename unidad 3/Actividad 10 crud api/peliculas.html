@@ -10,19 +10,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <div id="app">
-        <div class="container">
-
+        <button class="btn btn-secondary float-end" @click="logout">Logout</button>
+        <div class="container" style="margin-top: 15px;">
+            
             <div class="row row-cols-auto">
+                
                 <div class="col" v-for="(peli, index) in peliculas" :key="peli.id">
                     <div class="card" style="width: 18rem;">
                         <img :src="'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/'+peli.poster_path"
                             class="card-img-top" alt="...">
                         <div class="card-body">
-                            <a class="btn btn-success" @click="details()">
+                            <a class="btn btn-success" @click="details(peli.id)">
                                 <p class="card-text">{{peli.title}}</p>
                             </a>
                         </div>
@@ -31,6 +34,7 @@
                 </div>
             </div>
         </div>
+        
 
     </div>
     <script type="text/javascript">
@@ -43,13 +47,36 @@
             data() {
                 return {
                     peliculas: [],
-                    name: 'hola',
+                    name: sessionStorage.getItem('user'),
+
                 }
             },
             methods: {
                 details(id){
-                    sessionStorage.setItem("idPeli", );
+                    sessionStorage.setItem("idPeli", id);
+                    //console.log(id);
                     location.href = 'detail.html';
+                },
+                logout(){
+                    Swal.fire({
+                    title: 'Seguro que deseas cerrar sesion?',
+                    text: "Tendras que iniciar sesion de nuevo!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, salir'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        sessionStorage.clear();
+                        location.href = 'index.html';
+                        Swal.fire(
+                        'Cerrar sesion!',
+                        'Se cerro la sesion.',
+                        'success'
+                        )
+                    }
+                    })
                 }
 
             },
@@ -70,6 +97,10 @@
                     .catch(function (error) {
                         console.log(error);
                     });
+
+                if(!sessionStorage.user){
+                    location.href= "index.html";
+                }
             }
         }).mount('#app');
     </script>
