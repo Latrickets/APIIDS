@@ -2,18 +2,29 @@
 <html lang="en">
 
 <head>
-    <?php include '../layouts/head.php'; ?>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+    aside {
+        height: 90vh;
+    }
+    </style>
 </head>
 
 <body>
     <!--NAVBAR-->
-        <?php include '../layouts/navbar.php'; ?>
+    <?php include '../layouts/navbar.php'; ?>
     <!--NAVBAR-->
 
     <div class="container-fluid">
         <div class="row">
             <!--SIDEBAR-->
             <?php include '../layouts/sidebar.php' ?>
+            
             <!--CONTENT-->
             <div class="col-lg-10 col-sm-12">
                 <!--BREAD-->
@@ -32,8 +43,7 @@
                 </div>
                 <!--CONTENT-->
                 <div class="row">
-                    <?php for ($i=0; $i < 12; $i++): ?>
-                    <div class="col-md-3 col-sm-10 py-4">
+                    <div class="col-md-4 col-sm-10 py-4">
                         <div class="card mb-1">
                             <img src="../public/img/logo.png" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -45,12 +55,10 @@
                                     <a class="btn btn-warning col-6" data-bs-toggle="modal"
                                         data-bs-target="#createProductModal">Editar</a>
                                     <a onclick="remove()" class="btn btn-danger col-6">Eliminar</a>
-                                    <a href="detail.php" class="btn btn-info col-12">Detalles</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <?php endfor?>
                 </div>
             </div>
         </div>
@@ -86,6 +94,7 @@
     </div>
 
     <?php include '../layouts/scripts.php' ?>
+    
     <script type="text/javascript">
     function remove(target) {
         Swal.fire({
