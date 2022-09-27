@@ -24,21 +24,22 @@
                 <div class="col-md-6 border col-sm-12 col-lg-6 login">
                     <h1 class="text-center">Acceso al panel</h1>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos error qui fuga cumque numquam ad ducimus fugit tenetur aliquid consectetur! Minima, ipsa! Eveniet dolorem quam aut natus provident nihil corrupti.</p>
-                    <form class="form" action="products/index.php">
+                    <form class="form" method="POST" action="app/AuthController.php">
                         <div>
                             <label for="">Correo electronico</label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="text" class="form-control" placeholder="user@fakemail.com" aria-label="Username" aria-describedby="basic-addon1">
+                                <input name="email" type="text" class="form-control" placeholder="user@fakemail.com">
                             </div>
                         </div>
                         <div>
                             <label for="">Contrasenia</label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="text" class="form-control" placeholder="* * * * *" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" name="password" class="form-control" placeholder="* * * * *" >
                             </div>
                         </div>
+                        <input type="hidden" name="action" value="access">
                         <button type="submit" class="btn btn-primary col-12 mb-3">Accede</button>
                     </form>
                 </div>
