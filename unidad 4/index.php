@@ -36,7 +36,7 @@
                             <label for="">Contrasenia</label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="text" name="password" class="form-control" placeholder="* * * * *" >
+                                <input type="password" name="password" class="form-control" placeholder="* * * * *" >
                             </div>
                         </div>
                         <input type="hidden" name="action" value="access">

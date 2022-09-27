@@ -2,15 +2,16 @@
 //angel2_19@alu.uabcs.mx
 //o*4#i8DVLX@9jm
 if (isset($_POST['action'])) {
+    
     switch ($_POST['action']){
         case 'access':
-            $authController = new Authcontroller();
+            $authController = new AuthController();
 
-            $email = strip_tags($_POST('email'));
-            $password = strip_tags($_POST('password'));
-
+            $email = strip_tags($_POST['email']);
+            $password = strip_tags($_POST['password']);
+            
             $authController->login($email,$password);
-            break;
+        break;
     }
 }
 Class AuthController{
@@ -41,11 +42,11 @@ Class AuthController{
             $_SESSION['avatar'] = $response->data->avatar;
             $_SESSION['token'] = $response->data->token;
             
-            header("Location:products/index.php");
+            header("Location:../products/");
             
         }else{
-            var_dump($response);
-            header("Location:../index.php");
+            #var_dump($response);
+            header("Location:../?error=true");
         }
     }
 
