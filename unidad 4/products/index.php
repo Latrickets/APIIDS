@@ -70,23 +70,51 @@
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    
-                    <?php for ($i=0; $i < 6; $i++): ?>
-                    <div>
-                        <label for="">Correo electronico</label>
+                <form action="../app/ProductController.php" method="post">
+                    <div class="modal-body">
+                        
+                        <label for="">Nombre</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">@</span>
-                            <input type="text" class="form-control" placeholder="user@fakemail.com"
+                            <input type="text" name="name" class="form-control" placeholder="nombre"
                                 aria-label="Username" aria-describedby="basic-addon1">
                         </div>
+                        
+                        
+                        <label for="">Slug</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input type="text" name="slug" class="form-control" placeholder="slug"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+
+                        <label for="">Description</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input type="text" name="description" class="form-control" placeholder="descripcion del producto"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <label for="">Features</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input type="text" name="features" class="form-control" placeholder="features del producto"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        
+                        <label for="">Brand id</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input type="text" name="brand_id" class="form-control" placeholder="marca del producto"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <input type="hidden" name="action" value="create">
                     </div>
-                    <?php endfor?>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
