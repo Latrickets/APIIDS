@@ -38,14 +38,14 @@
                 </div>
                 <!--CONTENT-->
                 <div class="row">
-                    <?php for ($i=0; $i < 12; $i++): ?>
+                    <?php foreach ($products as $product) {?>
                     <div class="col-md-3 col-sm-10 py-4">
                         <div class="card mb-1">
-                            <img src="<?php echo $products[$i]->cover ?>" class="card-img-top" alt="...">
+                            <img src="<?php echo $product->cover ?>" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title text-center"><?php echo $products[$i]->name ?></h5>
-                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $products[$i]->tags[0]->name ?></h6>
-                                <p class="card-text"><?php echo $products[$i]->description ?></p>
+                                <h5 class="card-title text-center"><?php echo $product->name ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $product->tags[0]->name ?></h6>
+                                <p class="card-text"><?php echo $product->description ?></p>
                                 <div class="row">
                                     <a class="btn btn-warning col-6" data-bs-toggle="modal"
                                         data-bs-target="#createProductModal">Editar</a>
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php endfor?>
+                    <?php }?>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="../app/ProductController.php" method="post">
+                <form action="../app/ProductController.php" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         
                         <label for="">Nombre</label>
@@ -105,6 +105,11 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">@</span>
                             <input type="text" name="brand_id" class="form-control" placeholder="marca del producto"
+                                aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                            <input type="file" name="imagen" class="form-control" placeholder="imagen del producto" accept="image/*"
                                 aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <input type="hidden" name="action" value="create">
