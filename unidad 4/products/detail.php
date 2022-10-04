@@ -1,3 +1,12 @@
+<?php 
+    include '../app/ProductController.php';
+    $productController = new ProductController;
+    if (isset($_GET['slug'])) {
+        $slug = $_GET['slug'];
+        $product = $productController->getProduct($slug);
+        //var_dump($product);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,23 +52,50 @@
                 </div>
                 <!--CONTENT-->
                 <div class="row">
+                    <div class="col-md-5 col-sm-8 py-4">
+                        <img src="<?= $product->cover ?>" class="card-img-top"  alt="...">
+                    </div>
+                    <div class="col-md-6 col-sm-10 py-4">
+                        <h5 class="card-title text-center mt-2"><?= $product->name ?></h5>
+                        <h6 class="mt-2">Descripcion</h6>
+                        <p><?= $product->description ?></p>
+                        <p>Marca: <?= ($product->brand == null ? "Sin categoria" : $product->brand->name) ?></p>
+                        <p>Etiquetas:</p>
+                        <ul>                            
+                            <?php foreach ($product->tags as $tag) {?>
+                                <li> <?= $tag->name ?> </li>
+                            <?php } ?>
+                        </ul>
+                        <p>Categorias:</p>
+                        <ul>                            
+                            <?php foreach ($product->categories as $category) {?>
+                                <li> <?= $category->name ?> </li>
+                            <?php } ?>
+                        </ul>
+                        <p>Features:</p>
+                            <?= $product->features ?>
+                        
+                    </div>
+                </div>
+                <!--<div class="row">
                     <div class="col-md-4 col-sm-10 py-4">
                         <div class="card mb-1">
-                            <img src="../public/img/logo.png" class="card-img-top" alt="...">
+                            <img src="<?= $product->cover ?>" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title text-center">Tostitones</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Botanas</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.</p>
-                                <div class="row">
+                                <h5 class="card-title text-center"><?= $product->name ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                <p class="card-text"><?= $product->description ?></p>
+                                <!-<div class="row">
                                     <a class="btn btn-warning col-6" data-bs-toggle="modal"
                                         data-bs-target="#createProductModal">Editar</a>
                                     <a onclick="remove()" class="btn btn-danger col-6">Eliminar</a>
                                 </div>
+                                ->
                             </div>
                         </div>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </div>
