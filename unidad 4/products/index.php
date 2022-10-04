@@ -1,10 +1,12 @@
 <?php 
-                        include '../app/ProductController.php';
-                        $product = new ProductController;
-                        $products = $product->index();
-                        $brands = $product->brands();
-                        //var_dump($products);
-                    ?>
+    include '../app/ProductController.php';
+    $product = new ProductController;
+    $products = $product->index();
+    include '../app/BrandController.php';
+    $brand = new BrandController;
+    $brands = $brand->brands();
+    //var_dump($products);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
