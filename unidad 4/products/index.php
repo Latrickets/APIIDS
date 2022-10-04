@@ -2,6 +2,7 @@
                         include '../app/ProductController.php';
                         $product = new ProductController;
                         $products = $product->index();
+                        $brands = $product->brands();
                         //var_dump($products);
                     ?>
 <!DOCTYPE html>
@@ -44,7 +45,8 @@
                             <img src="<?php echo $product->cover ?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title text-center"><?php echo $product->name ?></h5>
-                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $product->tags[0]->name ?></h6>
+                                <h6 class="card-subtitle mb-2 text-muted"><?php echo ($product->brand == null ? "Sin categoria" : $product->brand->name) ?></h6>
+                                
                                 <p class="card-text"><?php echo $product->description ?></p>
                                 <div class="row">
                                     <a class="btn btn-warning col-6" data-bs-toggle="modal"
@@ -104,8 +106,12 @@
                         <label for="">Brand id</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">@</span>
-                            <input type="text" name="brand_id" class="form-control" placeholder="marca del producto"
-                                aria-label="Username" aria-describedby="basic-addon1">
+
+                            <select name="brand_id" class="form-control">
+                                <?php foreach ($brands as $brand) { ?>
+                                    <option value="<?php echo $brand->id ?>"><?php echo $brand->name ?></option>
+                                <?php }?>
+                            </select>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">@</span>
