@@ -1,17 +1,20 @@
 <?php
 //angel2_19@alu.uabcs.mx
 //o*4#i8DVLX@9jm
+include_once "config.php";
 if (isset($_POST['action'])) {
-    
-    switch ($_POST['action']){
-        case 'access':
-            $authController = new AuthController();
+    if (isset($_POST['global_token']) && $_POST['global_token'] == $_SESSION['global_token']) {
+        
+        switch ($_POST['action']){
+            case 'access':
+                $authController = new AuthController();
 
-            $email = strip_tags($_POST['email']);
-            $password = strip_tags($_POST['password']);
-            
-            $authController->login($email,$password);
-        break;
+                $email = strip_tags($_POST['email']);
+                $password = strip_tags($_POST['password']);
+                
+                $authController->login($email,$password);
+            break;
+        }
     }
 }
 Class AuthController{
@@ -36,7 +39,6 @@ Class AuthController{
         curl_close($curl);
         $response = json_decode($response);
         if (isset($response->code) && $response->code > 0) {
-            session_start();
             $_SESSION['id'] = $response->data->id;
             $_SESSION['name'] = $response->data->name;
             $_SESSION['lastname'] = $response->data->lastname;
