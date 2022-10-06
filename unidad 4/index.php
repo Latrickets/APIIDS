@@ -27,7 +27,7 @@ include_once "app/config.php";
                 <div class="col-md-6 border col-sm-12 col-lg-6 login">
                     <h1 class="text-center">Acceso al panel</h1>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos error qui fuga cumque numquam ad ducimus fugit tenetur aliquid consectetur! Minima, ipsa! Eveniet dolorem quam aut natus provident nihil corrupti.</p>
-                    <form class="form" method="POST" action="app/AuthController.php">
+                    <form class="form" method="POST" action="auth">
                         <div>
                             <label for="">Correo electronico</label>
                             <div class="input-group mb-3">

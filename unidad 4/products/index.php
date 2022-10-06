@@ -122,6 +122,7 @@
                         </div>
                         <input id="oculto_input" type="hidden" name="action" value="create">
                         <input id="id" type="hidden" name="id" value"create">
+                        <input type="hidden" name="global_token" value"<?= $_SESSION['global_token'] ?>">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -154,6 +155,7 @@
                 var bodyFormData = new FormData();
                 bodyFormData.append('id', id);
                 bodyFormData.append('action', 'delete');
+                bodyFormData.append('global_token', '<?= $_SESSION['global_token'] ?>');
 
                 axios.post('../app/ProductController.php', bodyFormData)
                 .then(function (response){
