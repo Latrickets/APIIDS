@@ -1,4 +1,5 @@
 <?php 
+    include_once "../app/config.php";
     include '../app/ProductController.php';
     $product = new ProductController;
     $products = $product->index();
@@ -74,7 +75,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="../app/ProductController.php" method="post" enctype="multipart/form-data">
+                <form action="<?= BASE_PATH?>prod" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         
                         <label for="">Nombre</label>
@@ -122,7 +123,8 @@
                         </div>
                         <input id="oculto_input" type="hidden" name="action" value="create">
                         <input id="id" type="hidden" name="id" value"create">
-                        <input type="hidden" name="global_token" value"<?= $_SESSION['global_token'] ?>">
+                        <input type="hidden" name="global_token" value="<?= $_SESSION['global_token'] ?>">
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -157,7 +159,7 @@
                 bodyFormData.append('action', 'delete');
                 bodyFormData.append('global_token', '<?= $_SESSION['global_token'] ?>');
 
-                axios.post('../app/ProductController.php', bodyFormData)
+                axios.post('<?= BASE_PATH?>prod', bodyFormData)
                 .then(function (response){
                     console.log(response);
                 })

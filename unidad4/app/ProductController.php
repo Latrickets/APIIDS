@@ -1,34 +1,35 @@
 <?php
 include_once "config.php";
 if (isset($_POST['action'])) {
-    
-    switch ($_POST['action']){
-        case 'create':
-            $name = strip_tags($_POST['name']);
-            $slug = strip_tags($_POST['slug']);
-            $description = strip_tags($_POST['description']);
-            $features = strip_tags($_POST['features']);
-            $brand_id = strip_tags($_POST['brand_id']);
-            $img_name = $_FILES['imagen']['tmp_name'];
-            $productController = new ProductController();
-            $productController->create($name,$slug,$description,$features,$brand_id, $img_name);
-        break;
-        case 'edit':
-            $name = strip_tags($_POST['name']);
-            $slug = strip_tags($_POST['slug']);
-            $description = strip_tags($_POST['description']);
-            $features = strip_tags($_POST['features']);
-            $brand_id = strip_tags($_POST['brand_id']);
-            $id = strip_tags($_POST['id']);
-            $productController = new ProductController();
-            $productController->update($name,$slug,$description,$features,$brand_id, $id);
-        break;
-        case 'delete':
-            $id = strip_tags($_POST['id']);
-            $productController = new ProductController();
-            $productController->delete($id);
-        break;
+    if (isset($_POST['global_token']) && $_POST['global_token'] == $_SESSION['global_token']) {
+        switch ($_POST['action']){
+            case 'create':
+                $name = strip_tags($_POST['name']);
+                $slug = strip_tags($_POST['slug']);
+                $description = strip_tags($_POST['description']);
+                $features = strip_tags($_POST['features']);
+                $brand_id = strip_tags($_POST['brand_id']);
+                $img_name = $_FILES['imagen']['tmp_name'];
+                $productController = new ProductController();
+                $productController->create($name,$slug,$description,$features,$brand_id, $img_name);
+            break;
+            case 'edit':
+                $name = strip_tags($_POST['name']);
+                $slug = strip_tags($_POST['slug']);
+                $description = strip_tags($_POST['description']);
+                $features = strip_tags($_POST['features']);
+                $brand_id = strip_tags($_POST['brand_id']);
+                $id = strip_tags($_POST['id']);
+                $productController = new ProductController();
+                $productController->update($name,$slug,$description,$features,$brand_id, $id);
+            break;
+            case 'delete':
+                $id = strip_tags($_POST['id']);
+                $productController = new ProductController();
+                $productController->delete($id);
+            break;
 
+        }
     }
 }
 
@@ -90,10 +91,10 @@ Class ProductController{
         $response = json_decode($response);
 
         if (isset($response->code) && $response->code > 0) {
-            header('Location: ../products/?success=true');
+            header("Location:".BASE_PATH."products/?success=true");
             
         }else{
-            header('Location: ../products/?error=true');
+            header("Location:".BASE_PATH."products/?error=true");
         }
 
     }
@@ -121,9 +122,9 @@ Class ProductController{
     curl_close($curl);
     $response = json_decode($response);
         if (isset($response->code) && $response->code > 0) {
-            header('Location: ../products/?success=true');
+            header("Location:".BASE_PATH."products/?success=true");
         }else{
-            header('Location: ../products/?error=true');
+            header("Location:".BASE_PATH."products/?error=true");
         }
 
     }
