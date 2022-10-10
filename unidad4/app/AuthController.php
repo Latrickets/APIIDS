@@ -49,7 +49,7 @@ Class AuthController{
             
         }else{
             #var_dump($response);
-            header("Location:".BASE_PATH."?error=true");
+            header("Location:".BASE_PATH."login?error=true");
         }
     }
 

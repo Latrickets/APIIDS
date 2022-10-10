@@ -55,7 +55,7 @@
                                     <a onclick="editProduct(this)" data-product='<?= json_encode($product); ?>' class="btn btn-warning col-6" data-bs-toggle="modal"
                                         data-bs-target="#createProductModal">Editar</a>
                                     <a onclick="remove(<?= $product->id ?>)" class="btn btn-danger col-6">Eliminar</a>
-                                    <a href="detail.php?slug=<?= $product->slug ?>" class="btn btn-info col-12">Detalles</a>
+                                    <a href="<?= BASE_PATH."product/".$product->slug ?>" class="btn btn-info col-12">Detalles</a>
                                 </div>
                             </div>
                         </div>

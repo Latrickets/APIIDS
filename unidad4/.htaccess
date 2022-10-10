@@ -4,3 +4,4 @@ RewriteEngine on
 #Rutas
 RewriteRule ^auth$ app/AuthController.php
 RewriteRule ^prod$ app/ProductController.php
+RewriteRule ^product/([a-zA-Z0-9-]*)$ products/detail.php?slug=$1
