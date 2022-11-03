@@ -59,7 +59,8 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        $client = Client::with('reservations')->find($client->id);
+        return view('clients.edit', compact('client'));
     }
 
     /**
@@ -71,7 +72,8 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        $client->update($request->all());
+        return $client;
     }
 
     /**

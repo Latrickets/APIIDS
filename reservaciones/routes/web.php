@@ -29,6 +29,8 @@ Route::get('clients/', [ClientController::class, 'index']);
 Route::get('clients/create', [ClientController::class, 'create']);
 Route::get('clients/{id}', [ClientController::class, 'show']);
 Route::post('clients/', [ClientController::class, 'store'])->name('storeuser');
+Route::get('clients/edit/{client}', [ClientController::class, 'edit'])->name('edituser');
+Route::put('clients/{client}', [ClientController::class, 'update'])->name('updateuser');
 
 Route::get('reservations/', [ReservationController::class, 'index']);
 Route::get('reservations/{id}', [ReservationController::class, 'show']);
