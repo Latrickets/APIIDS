@@ -26,7 +26,9 @@ Route::get("users/{id}", [UserController::class, "show"]);
 Route::post("users/", [UserController::class, "store"])->name("storeUser");
 
 Route::get('clients/', [ClientController::class, 'index']);
+Route::get('clients/create', [ClientController::class, 'create']);
 Route::get('clients/{id}', [ClientController::class, 'show']);
+Route::post('clients/', [ClientController::class, 'store'])->name('storeuser');
 
 Route::get('reservations/', [ReservationController::class, 'index']);
 Route::get('reservations/{id}', [ReservationController::class, 'show']);
